@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS {{ index .Options "Namespace" }}.schema_migrations (
 	CONSTRAINT schema_migrations_pkey PRIMARY KEY ("version")
 );
 comment on table auth.schema_migrations is 'Auth: Manages updates to the auth system.';
-		
+
 -- Gets the User ID from the request cookie
 create or replace function {{ index .Options "Namespace" }}.uid() returns uuid as $$
   select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid;
